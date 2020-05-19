@@ -16,11 +16,19 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 public:
 	ATankPlayerController();
 
+	UPROPERTY(EditAnywhere)
+		float CrossChairLoactionX = 0.5;
+	UPROPERTY(EditAnywhere)
+		float CrossChairLoactionY = 0.333333;
+
 protected:
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 public:
 
 	//获得控制的Tank
 	class ATank* GetControlTank();
+	void AimTowardCrosshair();
+	bool GetSightRayHitLocation(FVector& HitLocation);
 };
